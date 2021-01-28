@@ -1,0 +1,29 @@
+<app-datos-usuario></app-datos-usuario>
+<hr>
+<h1>Lista de artículos</h1>
+<p style="text-align: right;"><button (click)="insertar()">Insertar</button></p>
+<div *ngIf="insert">
+  <app-article-inserted (accionRealizada)="realizadoInsert($event)"></app-article-inserted>
+</div>
+<hr>
+<table style="width: 100%; border: 1px solid black;">
+    <tr>
+      <th>ID</th>
+      <th>Titulo</th>
+      <th>Cuerpo</th>
+      <th>Acciones</th>
+    </tr>
+    <ng-container *ngFor="let article of articles; index as i;">
+      <tr>
+        <td>{{article.id}}</td>
+        <td>{{article.titulo}}</td>
+        <td>{{article.cuerpo}}</td>
+        <td>
+          <button (click)="borrar(article)">Borrar</button><button (click)="editar(article)">Editar</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4"><div *ngIf="article.edit"><app-article-updated [article]="article" (accionRealizada)="realizadoUpdate(article)"></app-article-updated></div></td>
+      </tr>
+    </ng-container>
+  </table>

@@ -1,0 +1,24 @@
+<form [formGroup]="insertArticle" (ngSubmit)="onSubmit()">
+    <div>
+        <div>
+            <label>Título</label>
+            <input type="text" formControlName="titulo" />
+            <div *ngIf="submitted && formulario.titulo.errors">
+                <div>El título: </div>
+                <div *ngIf="formulario.titulo.errors.required">No puede estar vacío</div>
+            </div>
+        </div>
+        <div>
+            <label>Cuerpo</label>
+            <input type="text" formControlName="cuerpo" />
+            <div *ngIf="submitted && formulario.cuerpo.errors">
+                <div>El cuerpo: </div>
+                <div *ngIf="formulario.cuerpo.errors.required">No puede estar vacío</div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button>Enviar</button>
+        <button type="reset" (click)="onReset()">Cancelar</button>
+    </div>
+</form>
