@@ -23,6 +23,7 @@ export class ArticlesService {
     return this.http.get(url, { headers: headers });
   };
 
+  /**Petición delete */
   public deleteArticle = (article: any) => {
     const url = "http://localhost:8000/api/articles/" + article.id;
     if (!this.user)
@@ -32,6 +33,7 @@ export class ArticlesService {
     return this.http.delete(url, { headers: headers });
   }
 
+  /**Petición post para insertar */
   public insertArticle = (titulo: string, cuerpo: string) => {
     const url = "http://localhost:8000/api/articles";
 
@@ -45,6 +47,7 @@ export class ArticlesService {
     return this.http.post(url, { 'title': titulo, 'body': cuerpo }, { headers: headers });
   }
 
+  /**Petición put para actualizar */
   public updateArticle = (id: string, titulo: string, cuerpo: string) => {
     const url = "http://localhost:8000/api/articles/"+id;
 
